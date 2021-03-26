@@ -22,7 +22,7 @@ class NameServiceImplTest {
     private NameServiceImpl cut;
 
     @Test
-    public void shouldUseLocalFile() {
+    public void shouldUseLocalFile() throws IOException {
         FileReader testData = new FileReader("path-to-local-file");
         BufferedReader reader = new BufferedReader(testData);
         String testName = reader.readLine();
@@ -32,7 +32,8 @@ class NameServiceImplTest {
         verify(nameRepository).save(testName);
     }
 
-    public void shouldTestNameReading() {
+    @Test
+    public void shouldTestNameReading() throws Exception {
 
         String result = cut.getNameFromFile("filename", false);
 

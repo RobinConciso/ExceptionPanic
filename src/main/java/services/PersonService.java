@@ -4,12 +4,10 @@ import entities.Person;
 import exceptions.IdMissingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import repositories.PersonRepository;
 
 
 @Service
-@Transactional
 public class PersonService {
 
     private final PersonRepository personRepository;

@@ -10,6 +10,7 @@ import repositories.NameRepository;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -25,17 +26,13 @@ public class NameServiceImpl implements NameService {
     }
 
     @Override
-    public String getNameById(Long id) {
-        try {
-            return nameRepository.findById(id).orElse("ERROR");
-        } catch (Exception e) {
-            return "ERROR";
-        }
+    public Optional<String> getNameById(Long id) {
+        return nameRepository.findById(id);
     }
 
     @Override
     public String getNameFromFile(String filename, boolean eo) throws Exception {
-        if(eo) {
+        if (eo) {
             try {
                 return getNameFromFileExceptionOverload(filename);
             } catch (Exception e) {
